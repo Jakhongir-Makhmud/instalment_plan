@@ -7,7 +7,7 @@ import (
 
 
 type Sms struct {
-	client twilio.RestClient
+	client twilio.RestClient `json:"-"`
 }
 
 // initialize Sms service
