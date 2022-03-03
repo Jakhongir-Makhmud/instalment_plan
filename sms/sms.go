@@ -19,7 +19,7 @@ func NewSmsSerivce(client twilio.RestClient) *Sms {
 
 
 // SendSms sends sms only verified numbers, because it uses free Twilio account
-// only verified number is mine 
+// only verified number is mine
 func (s Sms) SendSms(phoneNumber, message string) error {
 	msg := &openapi.CreateMessageParams{}
 	msg.SetFrom("+19402363343")

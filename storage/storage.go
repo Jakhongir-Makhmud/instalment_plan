@@ -23,6 +23,6 @@ func NewStorage(db *sqlx.DB) *storagePool {
 }
 
 // Storage returns DatabaseRepo interface, from which you can use db methods
-func (s storagePool) Storage() repo.DatabaseRepo {
-	return s.database
+func (s storagePool) Storage() *repo.DatabaseRepo {
+	return &s.database
 }

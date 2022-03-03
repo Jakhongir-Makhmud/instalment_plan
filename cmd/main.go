@@ -23,7 +23,9 @@ func main() {
 		cfg.PostgresDatabase)
 
 	connDb,err := sqlx.Connect("postgres", psqlString)
-	fmt.Println(err)
+	if err != nil {
+		panic(err)
+	}
 	storagePool := storage.NewStorage(connDb)
 
 	client := twilio.NewRestClientWithParams(twilio.RestClientParams{

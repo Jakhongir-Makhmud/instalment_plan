@@ -13,7 +13,7 @@ import (
 type Option struct {
 	Conf config.Config
 	Sms  sms.Sms
-	DB   repo.DatabaseRepo
+	DB   *repo.DatabaseRepo
 }
 
 // New ...
@@ -23,7 +23,7 @@ func New(option Option) *gin.Engine {
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
 
-	handler := handlers.NewHandler(option.Conf,option.DB,option.Sms)
+	handler := handlers.NewHandler(option.Conf,*option.DB,option.Sms)
 
 	router.POST("/pay",handler.Pay)
 	router.GET("/shop/inform",handler.InformateShop)

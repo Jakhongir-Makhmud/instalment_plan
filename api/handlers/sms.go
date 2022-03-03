@@ -36,7 +36,7 @@ func (h handlers) Pay(c *gin.Context) {
 
 	if err = h.sms.SendSms(body.CustomerPhone,msg); err != nil {
 		c.JSON(http.StatusInternalServerError,gin.H{
-			"error":"cannot send sms",
+			"error":"cannot send sms" + err.Error(),
 		})
 	}
 

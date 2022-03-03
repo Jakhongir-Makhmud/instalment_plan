@@ -12,9 +12,13 @@ type ShopInformative struct {
 
 }
 
-// 
-func (s ShopInformative) GetInfo(repo repo.DatabaseRepo)  {
+// GetInfo returns total amounts paid for a debt
+func (s ShopInformative) GetInfo(repo repo.DatabaseRepo) (float64,error) {
 
-
+	totalPaid ,err := repo.GetInfo(s.ProductName,s.CustomerPhone,s.Price,s.InstallmentDuration)
+	if err != nil {
+		return -1, err
+	}
+	return totalPaid,nil
 
 }

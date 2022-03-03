@@ -20,6 +20,16 @@ func (h handlers) InformateShop(c *gin.Context) {
 		return
 	}
 
+	totalPaid,err := body.GetInfo(h.db)
 	
+	if err != nil {
+		c.JSON(http.StatusInternalServerError,gin.H{
+			"error":err.Error(),
+		})
+		return
+	}
 
+	c.JSON(http.StatusOK,gin.H{
+		"total paid":totalPaid,
+	})
 }
