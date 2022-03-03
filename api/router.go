@@ -1,7 +1,9 @@
 package api
 
 import (
+	"instalment_plan/api/handlers"
 	"instalment_plan/config"
+	"instalment_plan/sms"
 	"instalment_plan/storage/repo"
 
 	"github.com/gin-gonic/gin"
@@ -10,7 +12,8 @@ import (
 // Option ...
 type Option struct {
 	Conf config.Config
-	db   repo.DatabaseRepo
+	DB   repo.DatabaseRepo
+	Sms  sms.Sms
 }
 
 // New ...
@@ -20,9 +23,9 @@ func New(option Option) *gin.Engine {
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
 
-	// handler := handlers.NewHandler(option.db)
+	handler := handlers.NewHandler(option.Conf, option.DB, option.Sms)
 
-	// router.GET("/",)
+	router.GET("/",)
 
 	return router
 }

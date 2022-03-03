@@ -12,7 +12,8 @@ type ShopInformative struct {
 
 }
 
-func (s ShopInformative) GetInfo(repo repo.DatabaseRepo) {
+// 
+func (s ShopInformative) GetInfo(repo repo.DatabaseRepo)  {
 
 
 

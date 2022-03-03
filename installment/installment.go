@@ -5,7 +5,16 @@ import (
 	"math"
 )
 
-func CalculateInstallment(category, duration int, productPrice float64) (float64, error) {
+type Installment struct {
+	Category     string  `json:"category"`
+	Duration     int     `json:"duration"`
+	ProductPrice float64 `json:"product_price"`
+	ProductName string `json:"product_name"`
+	CustomerPhone string `json:"customer_phone"`
+	
+}
+
+func (i Installment) CalculateInstallment(category, duration int, productPrice float64) (float64, error) {
 	if duration > 24 {
 		return 0, errors.New("max range of installment is 24 monthes")
 	}
@@ -22,7 +31,6 @@ func CalculateInstallment(category, duration int, productPrice float64) (float64
 
 	return productPrice + additionPrice, nil
 }
-
 
 func calculateMultiplier(category, duration int) int {
 
