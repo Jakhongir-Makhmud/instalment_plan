@@ -1,7 +1,6 @@
 package api
 
 import (
-	"instalment_plan/api/handlers"
 	"instalment_plan/config"
 	"instalment_plan/sms"
 	"instalment_plan/storage/repo"
@@ -12,8 +11,8 @@ import (
 // Option ...
 type Option struct {
 	Conf config.Config
-	DB   repo.DatabaseRepo
 	Sms  sms.Sms
+	DB   repo.DatabaseRepo
 }
 
 // New ...
@@ -22,10 +21,7 @@ func New(option Option) *gin.Engine {
 
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
-
-	handler := handlers.NewHandler(option.Conf, option.DB, option.Sms)
-
-	router.GET("/",)
+	
 
 	return router
 }
